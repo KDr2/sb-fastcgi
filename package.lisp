@@ -9,6 +9,7 @@
 
 (defpackage #:sb-fastcgi
   (:use :cl :sb-alien)
+  (:nicknames #:cl-fastcgi)
   (:export #:load-libfcgi
            ;;internal
            #:fcgx-init

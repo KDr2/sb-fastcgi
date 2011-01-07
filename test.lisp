@@ -16,7 +16,8 @@
 (defun simple-app (req)
   (let ((c (format nil "Content-Type: text/plain
 
-Hello, I am a fcgi-program using Common-Lisp~%~A~%"
+Hello, I am a fcgi-program using Common-Lisp
+~%~A~%"
                    (sb-fastcgi:fcgx-getenv req))))
     (sb-fastcgi:fcgx-puts req c)))
 
@@ -48,7 +49,7 @@ Hello, I am a fcgi-program using Common-Lisp~%~A~%"
 ;;; C4. a nested WSGI-style app example
 (defun wsgi-app2 (app)
   (lambda (env start-response)
-    (let ((content-0 (funcall app env start-response))) ; call outter app
+    (let ((content-0 (funcall app env start-response))) ; call inner app
       ;;reset X-author in headers
       (funcall start-response nil '(("X-author" . "KDr2!")))
       (append '("Prefix <br/>")  content-0 '("<br/>Postfix")))))
