@@ -17,6 +17,8 @@
            #:fcgx-accept
            #:fcgx-finish
            #:fcgx-puts
+           #:fcgx-read
+           #:fcgx-read-all
            #:fcgx-getparam
            #:fcgx-getenv
            ;;servers

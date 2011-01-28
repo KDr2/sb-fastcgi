@@ -9,6 +9,9 @@
 
 (in-package :sb-fastcgi)
 
+
+(defvar *read-buffer-size* 1024)
+
 (define-alien-type nil
     (struct fcgx-request
             (request-id int)
@@ -60,6 +63,37 @@
     (alien-funcall (extern-alien "FCGX_PutS" (function int c-string (* t)))
                    content ostr)))
 
+;;TODO : make these bufffers thread-local?
+(defun fcgx-read (req)
+  (let* ((buf (make-alien char *read-buffer-size*))
+         (istr (slot req 'in))
+         (content
+          (make-array *read-buffer-size*
+                      :fill-pointer 0
+                      :element-type '(unsigned-byte 8)))
+         (readn
+          (alien-funcall (extern-alien "FCGX_GetStr"
+                                       (function int c-string int (* t)))
+                         buf *read-buffer-size* istr)))
+    ;;copy data
+    (loop for i from 0 upto (1- readn) do
+         (vector-push (deref buf i) content))
+    (free-alien buf)
+    (values content readn)))
+
+(defun fcgx-read-all (req)
+  (let ((contents nil)
+        (length 0)
+        (last-read *read-buffer-size*))
+    (do ()
+        ((< last-read *read-buffer-size*))
+      (multiple-value-bind (c l) (fcgx-read req)
+        (push c contents)
+        (setf length (+ length l))
+        (setf last-read l)))
+    (setf contents (nreverse contents))
+    (push 'vector contents)
+    (values contents length)))
 
 (defun fcgx-getparam (req key)
   (let ((env (slot req 'envp)))
