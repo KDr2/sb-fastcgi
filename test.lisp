@@ -40,7 +40,9 @@ Hello, I am a fcgi-program using Common-Lisp
   (funcall start-response "200 OK" '(("X-author" . "Who?")
                                      ("Content-Type" . "text/html")))
   (let ((post (funcall (cdr (assoc :POST-READER env)))))
-    (list "ENV (show in alist format): <br>" env "<br>" post)))
+    (list "ENV (show in alist format): <br>" env
+          "<br>LISP FEATURES (show in list format): <br>" *features*
+          "<br>POST BODY(read once):<br>" post)))
 
 ;;; C2. run app above on 0.0.0.0:9000 (by default)
 (defun run-app-1 ()
