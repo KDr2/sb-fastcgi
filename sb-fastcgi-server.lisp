@@ -46,11 +46,11 @@
           (setf sock (make-instance 'sb-bsd-sockets::inet-socket
                                     :type :stream
                                     :protocol (sb-bsd-sockets::get-protocol-by-name "tcp")))
+          (setf (sb-bsd-sockets:sockopt-reuse-address sock) t)
           (sb-bsd-sockets:socket-bind sock (sb-bsd-sockets:make-inet-address inet-addr) port)))
     (unwind-protect
          (progn
            (sb-bsd-sockets:socket-listen sock 128)
-           (setf (sb-bsd-sockets:sockopt-reuse-address sock) t)
            (server-on-fd func (sb-bsd-sockets:socket-file-descriptor sock)))
       (sb-bsd-sockets:socket-close sock))))
 
