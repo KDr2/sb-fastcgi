@@ -77,4 +77,3 @@
     (server-on-fd-threaded func
                            (sb-bsd-sockets:socket-file-descriptor sock)
                            :threads threads)))
-

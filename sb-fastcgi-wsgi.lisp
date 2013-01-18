@@ -33,7 +33,3 @@
         (fcgx-puts request (format nil "~%~%"))
         (dolist (item content)
           (fcgx-puts request (format nil "~A" item)))))))
-
-
-
-
