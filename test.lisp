@@ -10,7 +10,7 @@
 ;;; A1. load sb-fascgi asdf
 (asdf:operate 'asdf:load-op 'sb-fastcgi)
 ;;; A2. load libfcgi.so
-(sb-fastcgi:load-libfcgi "./c_src/libfcgi.so")
+(sb-fastcgi:load-libfcgi "/usr/lib/libfcgi.so.0.0.0")
 
 ;;; B1. simple app using fcgi-style interface
 (defun simple-app (req)
@@ -82,4 +82,3 @@ Hello, I am a fcgi-program using Common-Lisp
                                           (sb-ext:quit)))))
 
 (run-app-1)
-

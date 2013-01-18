@@ -11,7 +11,9 @@
   :author "KDr2 <killy.draw@gmail.com>"
   :licence "BSD License"
   :description "FastCGI wrapper for SBCL"
-  :depends-on (#-sbcl #:babel #-sbcl #:sb-alien #:sb-bsd-sockets)
+  :depends-on (#-(or sbcl ecl) #:babel
+                 #-(or sbcl ecl) #:sb-alien
+                 #:sb-bsd-sockets)
   :serial t
   :components ((:file "package")
                (:file "sb-fastcgi")
