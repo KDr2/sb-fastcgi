@@ -63,6 +63,19 @@
     (alien-funcall (extern-alien "FCGX_PutS" (function int c-string (* t)))
                    content ostr)))
 
+(defun fcgx-puts-utf-8 (req content &key (stream :out))
+  (let ((ostr nil))
+    (cond
+      ((eql stream :err)
+       (setf ostr (slot req 'err)))
+      (t (setf ostr (slot req 'out))))
+    (alien-funcall (extern-alien "FCGX_PutS"
+				 (function int (c-string
+						:external-format :utf-8
+						:element-type character)
+					   (* t)))
+                   content ostr)))
+
 ;;TODO : make these bufffers thread-local?
 (defun fcgx-read (req)
   (let* ((buf (make-alien char *read-buffer-size*))

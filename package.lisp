@@ -17,6 +17,7 @@
            #:fcgx-accept
            #:fcgx-finish
            #:fcgx-puts
+           #:fcgx-puts-utf-8
            #:fcgx-read
            #:fcgx-read-all
            #:fcgx-getparam
