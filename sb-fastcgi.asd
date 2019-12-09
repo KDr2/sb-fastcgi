@@ -1,14 +1,14 @@
 ;;;
 ;;; sb-fastcgi : http://kdr2.com/project/sb-fastcgi.html
 ;;;
-;;; Author : KDr2 <killy.draw@gmail.com>  http://kdr2.com
+;;; Author : KDr2 <zhuo.dev@gmail.com>  http://kdr2.com
 ;;;
 ;;; License : BSD License
 ;;;
 
 (asdf:defsystem #:sb-fastcgi
   :name "sb-fastcgi"
-  :author "KDr2 <killy.draw@gmail.com>"
+  :author "KDr2 <zhuo.dev@gmail.com>"
   :licence "BSD License"
   :description "FastCGI wrapper for SBCL"
   :depends-on (#-(or sbcl ecl) #:babel
