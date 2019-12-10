@@ -1,7 +1,7 @@
 ;;;
-;;; sb-fastcgi : http://kdr2.com/project/sb-fastcgi.html
+;;; sb-fastcgi : https://kdr2.com/project/sb-fastcgi.html
 ;;;
-;;; Author : KDr2 <zhuo.dev@gmail.com>  http://kdr2.com
+;;; Author : KDr2 <zhuo.dev@gmail.com>  https://kdr2.com
 ;;;
 ;;; License : BSD License
 ;;;

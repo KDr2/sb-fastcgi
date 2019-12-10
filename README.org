@@ -1,10 +1,10 @@
 #+TITLE: SB-FastCGI
 # -*- mode: org; mode: auto-fill -*-
 
- - HOMEPAGE : http://kdr2.com/project/sb-fastcgi.html
- - Author : KDr2 <zhuo.dev@gmail.com>  http://kdr2.com
+ - HOMEPAGE : https://kdr2.com/project/sb-fastcgi.html
+ - Author : KDr2 <zhuo.dev@gmail.com>  https://kdr2.com
  - License : BSD License
  - Curren-Version :    0.9
- - Docs :              http://kdr2.com/project/sb-fastcgi.html
+ - Docs :              https://kdr2.com/project/sb-fastcgi.html
  - Examples :          test.lisp
- - A Generic Version : http://kdr2.com/project/cl-fastcgi.html
+ - A Generic Version : https://kdr2.com/project/cl-fastcgi.html
